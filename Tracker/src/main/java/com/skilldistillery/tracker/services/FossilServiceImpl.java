@@ -6,23 +6,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.tracker.entities.Transaction;
-import com.skilldistillery.tracker.repositories.TransactionRepository;
+import com.skilldistillery.tracker.entities.Fossil;
+import com.skilldistillery.tracker.repositories.FossilRepository;
 
 @Service
-public class TransactionServiceImpl implements TransactionService {
+public class FossilServiceImpl implements FossilService {
 	@Autowired
-	private TransactionRepository tranRepo;
+	private FossilRepository tranRepo;
 	
 	
 	@Override
-	public List<Transaction> getAllTransactions() {
+	public List<Fossil> getAllTransactions() {
 		return tranRepo.findAll();
 				
 	}
 	@Override
-	public Transaction findById(int id) {
-		Optional<Transaction> test = tranRepo.findById(id);
+	public Fossil findById(int id) {
+		Optional<Fossil> test = tranRepo.findById(id);
 			if(test.isPresent()) {
 				return test.get();
 			}
@@ -30,16 +30,16 @@ public class TransactionServiceImpl implements TransactionService {
 		return null;
 	}
 	@Override
-	public Transaction create(Transaction transaction) {
+	public Fossil create(Fossil transaction) {
 		return tranRepo.save(transaction);
 	}
 	
 	@Override
 	public boolean delete(int id) {
 		boolean deleted = false;
-		Optional<Transaction> trans = tranRepo.findById(id);
+		Optional<Fossil> trans = tranRepo.findById(id);
 		if(trans.isPresent()) {
-			Transaction toRemove = trans.get();
+			Fossil toRemove = trans.get();
 			tranRepo.delete(toRemove);
 			deleted = true;
 		}

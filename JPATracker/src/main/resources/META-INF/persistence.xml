@@ -4,11 +4,11 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
 	
-	<class>com.skilldistillery.tracker.entities.Transaction</class>
+	<class>com.skilldistillery.tracker.entities.Fossil</class>
 	
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trackerdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-      <property name="javax.persistence.jdbc.user" value="tracker"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fossildb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
+      <property name="javax.persistence.jdbc.user" value="hunter"/>
       <property name="javax.persistence.jdbc.password" value="rattler" />
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 

@@ -13,27 +13,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.tracker.entities.Transaction;
-import com.skilldistillery.tracker.services.TransactionService;
+import com.skilldistillery.tracker.entities.Fossil;
+import com.skilldistillery.tracker.services.FossilService;
 
 @RestController
 @RequestMapping("api")
-public class TransactionController {
+public class FossilController {
 	
 	@Autowired
-	private TransactionService serv;
+	private FossilService serv;
 	
-	@GetMapping("transactions")
-	public List<Transaction> transactionIndex(){
+	@GetMapping("fossils")
+	public List<Fossil> fossilIndex(){
 		return serv.getAllTransactions();
 	}
 	
-	@GetMapping("transactions/{id}")
-	public Transaction findById(@PathVariable int id) {
+	@GetMapping("fossils/{id}")
+	public Fossil findById(@PathVariable int id) {
 		return serv.findById(id);
 	}
-	@PostMapping("transactions")
-	public Transaction createTransaction(@RequestBody Transaction transaction, HttpServletResponse res) {
+	@PostMapping("fossils")
+	public Fossil createTransaction(@RequestBody Fossil transaction, HttpServletResponse res) {
 		transaction = serv.create(transaction);
 		if(transaction ==null) {
 			res.setStatus(404);
@@ -42,7 +42,7 @@ public class TransactionController {
 		return transaction; 
 	
 	}
-	@DeleteMapping("transactions/{id}")
+	@DeleteMapping("fossils/{id}")
 	public Boolean deleteTransaction(@PathVariable int id) {
 		return serv.delete(id);
 		

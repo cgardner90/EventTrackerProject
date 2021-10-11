@@ -13,10 +13,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TransactionTest {
+class FossilTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Transaction trans;
+	private Fossil trans;
 	
 	
 	@BeforeAll
@@ -32,7 +32,7 @@ class TransactionTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		trans = em.find(Transaction.class, 1);
+		trans = em.find(Fossil.class, 1);
 	}
 
 	@AfterEach
@@ -44,7 +44,7 @@ class TransactionTest {
 	@Test
 	void test() {
 		assertNotNull(trans);
-		assertEquals("test", trans.getName());
+		assertEquals("El Graeco", trans.getName());
 	
 	}
 
