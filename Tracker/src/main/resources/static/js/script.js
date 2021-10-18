@@ -131,14 +131,9 @@ function displayFossil(fossil) {
 	dataDiv.appendChild(list);
 	dataDiv.appendChild(button);
 	
-	dataDiv.deleteButton.addEventListener('click', function(e){
-		e.preventDefault();
-		var fossilId = document.newFossil.id.value;
-		if(!isNaN(fossilId) && fossilId >0){
-			deleteFossil(fossilId);
-		}
-});;
+	
 }
+
 function deleteFossil(fossilId) {
 	
 	let xhr = new XMLHttpRequest();
@@ -150,4 +145,18 @@ function deleteFossil(fossilId) {
 	}
 	xhr.send();
 }
+document.deleteFossilForm.delete.addEventListener("click", function(e){
+		e.preventDefault();
+		var fossilId = document.deleteFossilForm.deleteFossilId.value;
+		if(!isNaN(fossilId) && fossilId >0){
+			if(confirm("Are You Sure you Wish to PERMANENTLY delete this fossil?")){
+			deleteFossil(fossilId);
+			}
+		}
+});
+	
+	
+	
+	
+
 
