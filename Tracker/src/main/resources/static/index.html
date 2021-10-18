@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Fossil Tracker</h1>
+<form name="fossilForm">
+<input type="number" name="fossilId">
+<button name="lookup">Enter and ID to retrieve a Fossil!</button>
+</form>
+ <div id="output">
+    <div id="fossilData"></div>
+    <hr>
+    <div id="addFossilForm">
+    <h3>Fill out below to Enter a newly discovered fossil</h3>
+    <form name="newFossil">
+    <h5>----- Fossil Info -----</h5>
+    <input type="text" name="name" placeholder="Enter Fossil Name"><br>
+    <textarea rows="3" name="description" placeholder="Enter Description of Fossil( ex: skull with mandible, femur...)"></textarea><br>
+    <input type="text" name="species" placeholder="Enter Fossil Species ('Unknown' if unknown)"><br>
+   	<input type ="number" name="age" placeholder="Age of Fossil (millions of years--ex: Lived 7.5 mya)"><br>
+   	
+   	<h5>----- Discovery Information---</h5>
+   	
+   	<input type="text" name="country" placeholder="Country in which discovered"><br> 
+   	<input type="text" name="discoveredBy" placeholder="Person who discovered"><br> 
+   	<input type="text" name="discoveredIn" placeholder="Year discovered"><br> 
+    <br>
+    <button name="addFossil">Add Fossil Now!</button><br>
+    <blockquote>
+    Note: If this is an update to an existing fossil:<br>
+    Fill in the appropriate fields above then:<br>
+    Please enter the existing fossil's id :
+    <input type="number" name="id" placeholder="ID"><br>
+    
+    <button name="updateFossil">Make Updates</button>
+    </blockquote>
+    </form>
+    
+    </div>
+  </div>
+<script src="js/script.js"></script>
+</body>
+</html>

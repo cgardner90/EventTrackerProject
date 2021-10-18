@@ -3,6 +3,13 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
+apply plugin: 'war'
+war {
+  enabled = true
+  archiveFileName = "${archivesBaseName}.war"
+  destinationDir = file("../")               // project workspace directory
+}
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -11,6 +18,10 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
+ext {
+    junit5Version = "5.5.1" 
+}
+
 
 dependencies {
 	implementation project(':JPATracker')
@@ -18,7 +29,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+	testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
+    testImplementation 'junit:junit:4.12'
+    
+    }
 
 test {
 	useJUnitPlatform()
