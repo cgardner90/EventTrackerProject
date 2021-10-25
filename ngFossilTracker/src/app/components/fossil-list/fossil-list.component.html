@@ -1,0 +1,54 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Fossil Name:</th>
+    <th>Fossil Description:</th>
+    <th>Fossil Species:</th>
+    <th>Fossil Age(mya):</th>
+    <th>Location of Discovery:</th>
+    <th>Discovered By:</th>
+    <th>Discovered In:</th>
+  </thead>
+  <tr *ngFor="let fossil of fossils" (click)='displayFossil(fossil)' (click)="editMode=true">
+<td *ngIf="!editMode">{{fossil.name}}</td>
+<td *ngIf="!editMode">{{fossil.description}}</td>
+
+<td *ngIf="!editMode">{{fossil.species}}</td>
+
+<td *ngIf="!editMode">{{fossil.age}} mya</td>
+
+<td *ngIf="!editMode">{{fossil.country}}</td>
+<td *ngIf="!editMode">{{fossil.discoveredBy}}</td>
+
+<td *ngIf="!editMode">{{fossil.discoveredIn}}</td>
+<td *ngIf="setEditFossil" >TESTTESTTEST</td>
+
+<td ><button name="setEdit" (click)="setEditFossil(fossil)">Edit</button>
+</td>
+</tr>
+</table>
+<button name="newFormButton" (click)="newForm=!newForm">Add New Fossil</button>
+
+<form *ngIf="newForm">
+  Name:<input type="text" name="name" placeholder="Enter Fossil Name"[(ngModel)]="newFossil.name"/><br>
+  Description of Remains:<input type="text" name="description" placeholder="Description of Fossil" [(ngModel)]="newFossil.description"/><br>
+  <hr>
+  Species:<input type="text" name="description" placeholder="Fossil Species" [(ngModel)]="newFossil.species"/><br>
+  Age: <input type="number" name="age" placeholder="Age in Million Years" [(ngModel)]="newFossil.age"><br>
+  Country:<input type="text" name="country" placeholder="Country of Discovery" [(ngModel)]="newFossil.country"><br>
+  <hr>
+  Discovered By: <input type="text" name="discoveredBy" placeholder="Discovered By" [(ngModel)]="newFossil.discoveredBy"/>
+  <br>
+  Discovery Year: <input type="text" name="discoveredIn" placeholder="YYYY (ex: 1965)" [(ngModel)]="newFossil.discoveredIn"><br><br>
+  Image:<input type="text" name="imgUrl" placeholder="Input an Image URL" [(ngModel)]="newFossil.imgUrl">
+<button type="submit" name="submit" class="btn">Submit</button>
+
+</form>
+<br>
+
+<br>
+
+<div *ngIf='selected'>
+    <h3>{{selected.name}}</h3>
+  <blockquote>{{selected.description}}  </blockquote>
+
+</div>

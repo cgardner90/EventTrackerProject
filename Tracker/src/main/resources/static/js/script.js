@@ -31,13 +31,35 @@ function postFossil(newFossil) {
 	xhr.setRequestHeader('Content-type', 'application/json');
 	xhr.send(JSON.stringify(newFossil));
 }
+function getFossil(fossilId) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET",`api/fossils/${fossilId}`);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status < 400) {
+			console.log(xhr.responseText);
+			let fossil = JSON.parse(xhr.responseText);
+			displayFossil(fossil);
+		}
+		
+		
+		//		if (fossil === null || fossil === undefined){
+		//			var dataDiv = document.getElementById('fossilData');
+		//			dataDiv.textContent = "Fossil not Found";
+		//			
+		//		}
+	};
+	xhr.setRequestHeader('Content-type', 'application/json');
+	xhr.send();
+}
+
+
 function updateFossil(toBeUpdated) {
 	let xhr = new XMLHttpRequest();
 	var id = toBeUpdated.id;
 	xhr.open("PUT", `api/fossils/${id}`);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
-			if (xhr.status === 200 || xhr.status === 200) {
+			if (xhr.status < 400) {
 				let fossil = JSON.parse(xhr.responseText);
 				displayFossil(fossil);
 			}
@@ -47,23 +69,6 @@ xhr.setRequestHeader('Content-type', 'application/json');
 xhr.send(JSON.stringify(newFossil));
 	}
 
-function getFossil(fossilId) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "api/fossils/" + fossilId);
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status < 400) {
-			console.log(xhr.responseText);
-			var fossil = JSON.parse(xhr.responseText);
-			displayFossil(fossil);
-		}
-		//		if (fossil === null || fossil === undefined){
-		//			var dataDiv = document.getElementById('fossilData');
-		//			dataDiv.textContent = "Fossil not Found";
-		//			
-		//		}
-	}
-	xhr.send();
-}
 
 document.newFossil.addFossil.addEventListener("click", function(e) {
 	e.preventDefault();

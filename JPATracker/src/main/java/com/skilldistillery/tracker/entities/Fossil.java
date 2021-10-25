@@ -24,6 +24,8 @@ public class Fossil {
 	private String discoveredBy;
 	@Column(name="discovered_in")
 	private String discoveredIn;
+	@Column(name="img_url")
+	private String imgUrl;
 	public int getId() {
 		return id;
 	}
